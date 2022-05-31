@@ -1,9 +1,20 @@
 <template>
-  <div>Hola mundo</div>
+  <Layout>
+    <template #header>
+      <Header></Header>
+    </template>
+  </Layout>
 </template>
 
 <script>
-export default {};
+import Header from "@/components/Header";
+import Layout from "@/components/Layout";
+export default {
+  components:{
+    Header,
+    Layout
+  }
+};
 </script>
 
 <style></style>

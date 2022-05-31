@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Splashscreen from "@/components/SplashScreen.vue";
+import Splashscreen from "@/components/SplashScreen";
 import { defineAsyncComponent } from "vue";
 
 export default {
