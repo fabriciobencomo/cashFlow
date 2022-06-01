@@ -2,11 +2,28 @@
   <div class="header">
       <slot name="header"></slot>
   </div>
+  <div class="resume">
+      <slot name="resume"></slot>
+  </div>
+  <div class="movements">
+      <div class="head" @click="showMovements = !showMovements">
+          <div class="grip">
+
+          </div>
+          <div class="body" v-show="showMovements">
+              <slot name="movements"></slot>
+          </div>
+      </div>
+  </div>
 </template>
 
 <script>
 export default {
-
+    data()  {
+        return{
+            showMovements: false
+        }
+    }
 }
 </script>
 
