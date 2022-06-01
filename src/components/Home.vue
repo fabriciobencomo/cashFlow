@@ -4,7 +4,11 @@
       <Header></Header>
     </template>
     <template #resume>
-      <Resume></Resume>
+      <Resume 
+        :label="'Total Saved'"
+        :total-amount="100000"
+        :amount="1000">
+      </Resume>
     </template>
     <template #movements>
       <Movements/>
