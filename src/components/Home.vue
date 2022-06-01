@@ -8,6 +8,12 @@
         :label="'Total Saved'"
         :total-amount="100000"
         :amount="1000">
+        <template #graphic>
+          graphic
+        </template>
+        <template #action>
+          action
+        </template>
       </Resume>
     </template>
     <template #movements>
