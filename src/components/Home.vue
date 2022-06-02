@@ -12,7 +12,7 @@
           graphic
         </template>
         <template #action>
-          action
+          <Action></Action>
         </template>
       </Resume>
     </template>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import Action from "@/components/Action";
 import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 import Movements from "@/components/Movements/Index";
@@ -35,7 +36,8 @@ export default {
     Header,
     Layout,
     Resume,
-    Movements
+    Movements,
+    Action
   },
   data(){
     return{
