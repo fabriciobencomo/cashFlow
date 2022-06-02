@@ -17,7 +17,9 @@
       </Resume>
     </template>
     <template #movements>
-      <Movements/>
+      <Movements 
+        :movements="movements" 
+      />
     </template>
   </Layout>
 </template>
@@ -25,7 +27,7 @@
 <script>
 import Header from "@/components/Header";
 import Layout from "@/components/Layout";
-import Movements from "@/components/Movements";
+import Movements from "@/components/Movements/Index";
 import Resume from "@/components/Resume/Index";
 
 export default {
@@ -34,6 +36,36 @@ export default {
     Layout,
     Resume,
     Movements
+  },
+  data(){
+    return{
+      movements:[
+        {
+          id:0,
+          title:"Movement 1",
+          description: "Wage Deposit",
+          amount: 1000
+        },
+        {
+          id:1,
+          title:"Movement 2",
+          description: "Friend Debt",
+          amount: 100
+        },        
+        {
+          id:0,
+          title:"Movement 3",
+          description: "water",
+          amount: 70
+        },        
+        {
+          id:0,
+          title:"Movement 4",
+          description: "Light",
+          amount: 100
+        },
+      ]
+    }
   }
 };
 </script>
