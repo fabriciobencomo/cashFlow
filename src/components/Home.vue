@@ -53,16 +53,16 @@ export default {
           amount: 100
         },        
         {
-          id:0,
+          id:2,
           title:"Movement 3",
           description: "water",
-          amount: 70
+          amount: -70
         },        
         {
-          id:0,
+          id:3,
           title:"Movement 4",
           description: "Light",
-          amount: 100
+          amount: -100
         },
       ]
     }
