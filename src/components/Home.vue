@@ -4,88 +4,137 @@
       <Header></Header>
     </template>
     <template #resume>
-      <Resume 
-        :label="'Total Saved'"
-        :total-amount="100000"
-        :amount="1000">
+      <Resume
+        :total-label="'Ahorro total'"
+        :label="label"
+        :total-amount="1000000"
+        :amount="amount"
+      >
         <template #graphic>
-          <Graphic :amounts="amounts"/>
+          <Graphic :amounts="amounts" />
         </template>
         <template #action>
-          <Action></Action>
+          <Action />
         </template>
       </Resume>
     </template>
     <template #movements>
-      <Movements 
-        :movements="movements" 
-      />
+      <Movements :movements="movements" />
     </template>
   </Layout>
 </template>
 
 <script>
-import Action from "@/components/Action";
-import Header from "@/components/Header";
-import Layout from "@/components/Layout";
-import Movements from "@/components/Movements/Index";
-import Resume from "@/components/Resume/Index";
+import Action from "./Action.vue";
+import Header from "./Header.vue";
+import Layout from "./Layout.vue";
+import Movements from "./Movements/Index.vue";
 import Graphic from "./Resume/Graphic.vue";
-
+import Resume from "./Resume/Index.vue";
 export default {
-  components:{
-    Header,
+  components: {
     Layout,
+    Header,
     Resume,
-    Movements,
     Action,
-    Graphic
+    Movements,
+    Graphic,
 },
-  data(){
-    return{
-      amounts: [
-        100,
-        200,
-        500,
-        100,
-        20,
-        -100,
-        -600,
-        -300,
-        -200,
-        -300,
-        100,
-        200
+  data() {
+    return {
+      label: null,
+      amount: null,
+      movements: [
+        {
+          id: 0,
+          title: "Movimiento 1",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 100,
+          time: new Date()-1,
+        },
+        {
+          id: 1,
+          title: "Movimiento 2",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 200,
+          time: new Date()-1,
+        },
+        {
+          id: 2,
+          title: "Movimiento 3",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 500,
+          time: new Date()-1,
+        },
+        {
+          id: 3,
+          title: "Movimiento 4",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 200,
+          time: new Date()-1,
+        },
+        {
+          id: 4,
+          title: "Movimiento 5",
+          description: "Lorem ipsum dolor sit amet",
+          amount: -400,
+          time: new Date()-1,
+        },
+        {
+          id: 5,
+          title: "Movimiento 6",
+          description: "Lorem ipsum dolor sit amet",
+          amount: -600,
+          time: new Date()-1,
+        },
+        {
+          id: 6,
+          title: "Movimiento 7",
+          description: "Lorem ipsum dolor sit amet",
+          amount: -300,
+          time: new Date()-1,
+        },
+        {
+          id: 7,
+          title: "Movimiento 8",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 100,
+          time: new Date()-1,
+        },
+        {
+          id: 8,
+          title: "Movimiento 9",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 300,
+          time: new Date()-1,
+        },
+        {
+          id: 9,
+          title: "Movimiento 10",
+          description: "Lorem ipsum dolor sit amet",
+          amount: 500,
+          time: new Date()-1,
+        },
       ],
-      movements:[
-        {
-          id:0,
-          title:"Movement 1",
-          description: "Wage Deposit",
-          amount: 1000
-        },
-        {
-          id:1,
-          title:"Movement 2",
-          description: "Friend Debt",
-          amount: 100
-        },        
-        {
-          id:2,
-          title:"Movement 3",
-          description: "water",
-          amount: -70
-        },        
-        {
-          id:3,
-          title:"Movement 4",
-          description: "Light",
-          amount: -100
-        },
-      ]
+    };
+  },
+  computed: {
+    amounts() {
+      const lastDays = this.movements
+        .filter(m => {
+          const today = new Date();
+          const oldDate = today.setDate(today.getDate() - 30);
+          return m.time > oldDate;
+        })
+        .map(m => m.amount);
+      
+      return lastDays.map((m, i) => {
+        const lastMovements = lastDays.slice(0, i);
+        return lastMovements.reduce((suma, movement) => {
+          return suma + movement
+        }, 0);
+      });
     }
-  }
+  },
 };
 </script>
-
-<style></style>

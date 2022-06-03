@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { computed, defineProps, ref, toRefs } from "vue";
+import { computed, defineProps, ref, toRefs, watch } from "vue";
 
 const props = defineProps({
     amounts:{
@@ -68,6 +68,14 @@ const points = computed(() => {
 const showPointer = ref(false);
 
 const pointer = ref(0);
+
+const emit = defineEmits(["select"])
+
+watch(pointer, (value) => {
+    const index = Math.ceil((value / (300 / amounts.value.length)));
+    if (index < 0 || index > amounts.value.length) return;
+    emit("select", amounts.value[index - 1]);
+});
 
 const tap = ({target, touches}) => {
     showPointer.value = true;
