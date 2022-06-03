@@ -9,7 +9,7 @@
         :title="movement.title"
         :description="movement.description"
         :amount="movement.amount"
-        @remove="remove">
+        @remove="remove(movement.id)">
       </Movement>
     </div>
   </div>
@@ -29,7 +29,7 @@ export default {
   },
   methods:{
     remove(id){
-      console.log('remove', id)
+      this.$emit("remove", id)
     }
   }
 }

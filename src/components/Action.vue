@@ -26,7 +26,7 @@
             </label>
           </div>
           <div class="action">
-            <button>Add Movement</button>
+            <button >Add Movement</button>
           </div>
         </form>
       </Modal>
@@ -51,7 +51,14 @@ export default {
     methods:{
       submit(){
         this.showModal = false;
-      }
+        this.$emit('create', {
+        title: this.title,
+        description: this.description,
+        amount: this.movementType === "entry" ? this.amount : -this.amount,
+        time: new Date(),
+        id:new Date()
+        })
+      },
     }
 }
 </script>
