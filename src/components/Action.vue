@@ -1,21 +1,58 @@
 <template>
   <button @click="showModal = true">Add Movement</button>
   <teleport to="#app">
-      <Modal v-show="showModal" @close="showModal = false"></Modal>
+      <Modal v-show="showModal" @close="showModal = false">
+        <form @submit.prevent="submit">
+          <div class="field">
+            <label>Title</label>
+            <input type="text" v-model="title" />
+          </div>
+          <div class="field">
+            <label>Amount</label>
+            <input type="number" v-model="amount" />
+          </div>
+          <div class="field">
+            <label>Description</label>
+            <textarea rows="4" v-model="description"></textarea>
+          </div>
+          <div class="field">
+            <label class="radio-label">
+              <input type="radio" v-model="movementType" value="entry" />
+              <span>Entry</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" v-model="movementType" value="withdrawal" />
+              <span>Withdrawal</span>
+            </label>
+          </div>
+          <div class="action">
+            <button>Add Movement</button>
+          </div>
+        </form>
+      </Modal>
   </teleport>
 </template>
 
 <script>
-import Modal from "@/components/Modal"
+import Modal from "@/components/Modal";
 export default {
     data(){
         return{
-            showModal:false
+            showModal:false,
+            title:"",
+            description:"",
+            amount:0,
+            movementType:"entry"
         }
     },
     components: {
         Modal
     },
+    methods:{
+      submit(){
+        this.showModal = false;
+      }
+    }
 }
 </script>
 
