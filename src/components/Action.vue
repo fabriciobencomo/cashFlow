@@ -58,10 +58,10 @@ export default {
         time: new Date(),
         id:new Date()
         })
-        title.value = "";
-        description.value = "";
-        amount.value = 0;
-        movementType.value = "entry";
+        this.title = "";
+        this.description = "";
+        this.amount = 0;
+        this.movementType = "entry";
       },
     }
 }
